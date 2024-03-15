@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Activity Page</title>
+</head>
+<body>
+    <h1>Monthly Activity Page</h1>
+
+    <label for="subjectSelect">Select Subject:</label>
+    <select id="subjectSelect">
+        <option value="telugu">TELUGU</option>
+        <option value="hindi">HINDI</option>
+        <option value="maths">Maths</option>
+        <option value="english">English</option>
+        <option value="science">Science</option>
+        <option value="social">SOCIAL</option>
+        <!-- Add more subjects as needed -->
+    </select>
+
+    <div id="monthlyActivities">
+        <!-- Monthly activities will be inserted here dynamically -->
+    </div>
+
+    <script>
+        // Sample monthly activities data for demonstration
+        const monthlyActivities = {
+            telugu: [
+                          "Completed chapter4 and chapter5",
+                          "Done with an assessment",
+                          
+            ],
+            hindi: [
+                          "Completed chapter3 and chapter4",
+                          "Done with an assessment",
+                          
+                        
+            ],
+                     
+            maths: [
+                "Create project file which contains tables between 12 to 19",
+                "Practice solving algebraic equations",
+                "Completed chapter3 and chapter4",
+                "Done with an assessment",
+                          
+                // Add more activities for Maths
+            ],
+            english: [
+                "Read 'To Kill a Mockingbird'",
+                "Write an essay on a favorite book",
+                "Completed chapter3 and chapter4",
+                "Done with an assessment",
+                          
+                // Add more activities for English
+            ],
+            science: [
+                "Experiment with chemical reactions",
+                "Study the properties of acids and bases",
+                "Completed chapter4 and chapter5",
+                // Add more activities for Science
+            ],
+            social: [
+                "Completed chapter4 and chapter5",
+                "Done with an assessment",
+            ],
+
+            // Add more subjects and activities as needed
+        };
+
+        // Function to display monthly activities based on selected subject
+        function displayMonthlyActivities() {
+            const subjectSelect = document.getElementById("subjectSelect");
+            const selectedSubject = subjectSelect.value;
+            const monthlyActivitiesContainer = document.getElementById("monthlyActivities");
+
+            // Clear previous activities
+            monthlyActivitiesContainer.innerHTML = "";
+
+            // Display activities for selected subject
+            const activities = monthlyActivities[selectedSubject];
+            if (activities) {
+                activities.forEach(activity => {
+                    const activityElement = document.createElement("p");
+                    activityElement.textContent = activity;
+                    monthlyActivitiesContainer.appendChild(activityElement);
+                });
+            } else {
+                const noActivityElement = document.createElement("p");
+                noActivityElement.textContent = "No activities found for this subject.";
+                monthlyActivitiesContainer.appendChild(noActivityElement);
+            }
+        }
+
+        // Call the displayMonthlyActivities function when the subject selection changes
+        document.getElementById("subjectSelect").addEventListener("change", displayMonthlyActivities);
+
+        // Initially display activities for the default selected subject
+        displayMonthlyActivities();
+    </script>
+</body>
+</html>
